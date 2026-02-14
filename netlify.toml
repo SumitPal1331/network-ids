@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "supabase/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  environment = { VITE_SUPABASE_URL = "https://hlwnixwdeozcpphwnfci.supabase.co", NODE_ENV = "production" }
+
+[context.deploy-preview]
+  environment = { VITE_SUPABASE_URL = "https://hlwnixwdeozcpphwnfci.supabase.co", NODE_ENV = "development" }
+
+[context.branch-deploy]
+  environment = { VITE_SUPABASE_URL = "https://hlwnixwdeozcpphwnfci.supabase.co", NODE_ENV = "development" }
